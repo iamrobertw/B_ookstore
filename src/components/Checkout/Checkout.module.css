@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  width: 43vw;
+}
+
+h1 {
+  margin-top: 2rem !important;
+  font-size: 2rem !important;
+}
+
+.checkout__button {
+  background-color: var(--secondary-color) !important;
+  min-width: 18rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  color: var(--light-color);
+  font-weight: bold;
+}
+.checkout__button:hover {
+  opacity: 0.8;
+  transition: all ease-in-out 0.2s;
+}
+.error {
+  color: red !important;
+  font-size: 1rem !important;
+}

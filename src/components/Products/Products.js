@@ -32,17 +32,17 @@ const Products = (state) => {
           ))}
       </div>
       <div className={styles.pagination}>
-            <button
-              style={{
-                background: pageNumber === 1 && "#eeeeee",
-                color: pageNumber === 1 && "#c7c7c7",
-              }}
-              disabled={pageNumber === 1 ? true : false}
-              className={styles.products__button_prev}
-              onClick={prevPage}
-            >
-              POPRZEDNIA
-            </button>
+        <button
+          style={{
+            background: pageNumber === 1 && "#eeeeee",
+            color: pageNumber === 1 && "#c7c7c7",
+          }}
+          disabled={pageNumber === 1 ? true : false}
+          className={styles.products__button_prev}
+          onClick={prevPage}
+        >
+          POPRZEDNIA
+        </button>
         <button
           style={{
             background: pageNumber === 2 && "#eeeeee",
@@ -54,7 +54,6 @@ const Products = (state) => {
         >
           NASTĘPNA
         </button>
-
       </div>
     </>
   );

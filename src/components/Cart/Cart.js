@@ -32,7 +32,12 @@ const Cart = ({ cart }) => {
         <h4 className={styles.recap__title}>PODSUMOWANIE KOSZYKA</h4>
         <div className={styles.recap__price}>
           <span className={styles.recap__price_desc}>
-            RAZEM: ({totalItems} książki)
+            RAZEM: ( {totalItems} {totalItems === 1 && "książka"}{" "}
+            {totalItems > 4 && "książek"}{" "}
+            {(totalItems === 2) | (totalItems === 3) | (totalItems === 4)
+              ? "książki"
+              : ""}
+            )
           </span>
           <span> {totalPrice} PLN</span>
         </div>

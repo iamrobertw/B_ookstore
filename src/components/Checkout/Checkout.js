@@ -18,13 +18,23 @@ const Checkout = ({ cart }) => {
   const [toSendOrder, setToSendOrder] = useState([]);
   const [toSubmit, setToSubmit] = useState([{}]);
   const [serverResponse, setServerResponse] = useState();
+  const [errors, setErrors] = useState();
 
   function sendOrder() {
-    storeApi.post("/api/order", toSubmit).then((response) => {
-      console.log("\x1b[36m%s\x1b[0m", "Server response:", response.status);
+    storeApi
+      .post("/api/order", toSubmit)
+      .then((response) => {
+        console.log("\x1b[36m%s\x1b[0m", "Server response:", response.status);
 
-      setServerResponse(response.status);
-    });
+        setServerResponse(response.status);
+      })
+      .catch((err) => {
+        if (err.response) {
+          setErrors(err.response.status);
+          console.log(`Error: ${err.message}`);
+          // console.log(err);
+        }
+      });
   }
 
   useEffect(() => {
@@ -103,7 +113,6 @@ const Checkout = ({ cart }) => {
     }
     return errors;
   };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -111,8 +120,8 @@ const Checkout = ({ cart }) => {
         {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
         <h1>Wprowadź dane do zamówienia</h1>
         {(Object.keys(formErrors).length === 0) & isSubmit ? (
-          <div className="ui message success"> 
-          Twoje zamówienie i Twoje dane zostały pomyślnie wysłane!
+          <div className="ui message success">
+            Twoje dane zostały pomyślnie wysłane!
           </div>
         ) : (
           ""
@@ -124,7 +133,7 @@ const Checkout = ({ cart }) => {
         )}
         {serverResponse !== 201 && isSubmit && (
           <div className="ui message error">
-        Coś poszło nie tak! Serwer odrzucił żądanie. Sprawdź proszę Twoje dane i połączenie, a następnie spróbuj ponownie!
+           Coś poszło nie tak! Serwer odrzucił żądanie. Sprawdź proszę Twoje dane i połączenie, a następnie spróbuj ponownie!
           </div>
         )}
         <form onSubmit={handleSubmit} method="POST" target="_blank">
@@ -170,8 +179,16 @@ const Checkout = ({ cart }) => {
               />
             </div>
             <p className={styles.error}>{formErrors.zip_code}</p>
-            <button onClick={sendOrder} className={styles.checkout__button}>
-            ZAMAWIAM I PŁACĘ
+            <button
+              disabled={totalItems === 0}
+              onClick={sendOrder}
+              className={
+                totalItems !== 0
+                  ? styles.checkout__button
+                  : styles.checkout__button_nonactive
+              }
+            >
+               ZAMAWIAM I PŁACĘ
             </button>
           </div>
         </form>

@@ -6,7 +6,6 @@
   align-items: center;
   animation: books-appear 1s ease-out forwards;
 }
-
 @keyframes books-appear {
   from {
     opacity: 0;
@@ -33,11 +32,11 @@
   transition: all ease-in-out 0.2s;
 }
 .products__button_next:hover {
-  opacity:.8;
+  opacity: 0.8;
   transition: all ease-in-out 0.2s;
 }
 .products__button_prev:hover {
-  opacity:.8;
+  opacity: 0.8;
   transition: all ease-in-out 0.2s;
 }
 .products__button_prev {

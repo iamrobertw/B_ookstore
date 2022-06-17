@@ -27,16 +27,20 @@ const CartItem = ({ item, fitQty, removeFromCart }) => {
           <div className={styles.cartItem__portion}>
             <p className={styles.portion__title}>{item.title}</p>
             <p className={styles.portion__desc}>{item.author}</p>
-            <p className={styles.portion__desc}>{item.pages} pages</p>
+            <p className={styles.portion__desc}>Ilość stron: {item.pages}</p>
             <p className={styles.portion__price}>
               {item.price} {item.currency}
             </p>
           </div>
         </div>
         <div className={styles.cartItem__actions}>
+        <p className={styles.portion__price_downsize}> 
+              {item.price} {item.currency}
+            </p>
           <div className={styles.cartItem__qty}>
-            <label htmlFor="qty">ILOŚĆ</label>
-            <input
+            <label htmlFor="qty">ILOŚĆ: </label>
+            <p className={styles.downsize}> {input}</p>
+            <input  className={styles.upsize}
               min="1"
               type="number"
               id="quantity"
@@ -49,7 +53,7 @@ const CartItem = ({ item, fitQty, removeFromCart }) => {
             onClick={() => removeFromCart(item.id)}
             className={styles.actions__button}
           >
-            Usuń
+             Usuń
           </button>
         </div>
       </div>

@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
   padding: 0.6rem;
 }
 
@@ -65,7 +65,6 @@
   padding: 10px;
   margin-left: 0.4rem;
   width: 4rem;
-
   border: 1px solid var(--secondary-color);
   outline: none;
 }
@@ -110,4 +109,43 @@
 }
 .cartItem__content {
   display: flex;
+}
+.downsize {
+  display: none;
+}
+
+@media (max-width: 960px) {
+}
+
+@media (max-width: 960px) {
+}
+
+.portion__price_downsize {
+  display: none;
+}
+@media (max-width: 960px) {
+}
+
+@media (max-width: 960px) {
+  .portion__price {
+    display: none;
+  }
+  .actions__button {
+    height: 2.1rem;
+    max-width: 5rem;
+  }
+  .cartItem__image {
+    max-height: 120px;
+  }
+  .portion__price_downsize {
+    display: block;
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
+  .downsize {
+    display: flex;
+  }
+  .upsize {
+    display: none;
+  }
 }
